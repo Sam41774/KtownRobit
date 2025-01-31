@@ -43,8 +43,8 @@ public class outTakeTest extends LinearOpMode {
         armLeft.setPosition(1-servoMin);
 
         //spinners
-        spinner = hardwareMap.get(CRServo.class,"leftSpin");
-        spinnerLeft = hardwareMap.get(CRServo.class,"rightSpin");
+        spinner = hardwareMap.get(CRServo.class,"rightSpin");
+        spinnerLeft = hardwareMap.get(CRServo.class,"leftSpin");
         /////-----------------------------------------------------------------------------------
 
         telemetry.addData("Status", "Initialized");
@@ -109,7 +109,7 @@ public class outTakeTest extends LinearOpMode {
         lastSpinnerState = currentSpinnerState;
 
         if (spinnertoggle) {
-            spinner.setPower(1.0);
+            spinner.setPower(-1.0);
             spinnerLeft.setPower(1.0);
         }
         else {
