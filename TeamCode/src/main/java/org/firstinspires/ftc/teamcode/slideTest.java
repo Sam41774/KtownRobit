@@ -16,16 +16,18 @@ import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 @Config
 public class slideTest extends LinearOpMode {
     private ElapsedTime runTime = new ElapsedTime();
-    private Servo slide = null;
-    public static double SERVO_POSITION = 0.5;
-
+    private Servo leftSlide;
+    private Servo rightSlide;
+    public static double SERVO_POSITION_LEFT = 0.01;
+    public static double SERVO_POSITION_RIGHT = 0.1;
 
     @Override
     public void runOpMode() {
 
        //-------------------------------------------------------------------
 
-        slide = hardwareMap.get(Servo.class, "slide");
+        leftSlide = hardwareMap.get(Servo.class, "leftSlide");
+        rightSlide = hardwareMap.get(Servo.class, "rightSlide");
 
         FtcDashboard dashboard = FtcDashboard.getInstance();
 
@@ -36,14 +38,15 @@ public class slideTest extends LinearOpMode {
         runTime.reset();
 
         while (opModeIsActive()) {
-            slide.setPosition(SERVO_POSITION);
+            leftSlide.setPosition(SERVO_POSITION_LEFT);
+            rightSlide.setPosition(SERVO_POSITION_RIGHT);
 
             TelemetryPacket packet = new TelemetryPacket();
-            packet.put("Servo Position", SERVO_POSITION);
+            packet.put("Servo Position Right", SERVO_POSITION_LEFT);
+            packet.put("Servo Position Left", SERVO_POSITION_RIGHT);
             dashboard.sendTelemetryPacket(packet);
 
-            telemetry.addData("Position", slide.getPosition());
-            telemetry.update();
+
         }
     }
 
