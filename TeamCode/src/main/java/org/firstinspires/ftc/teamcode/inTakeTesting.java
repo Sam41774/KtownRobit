@@ -10,10 +10,11 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 @Config
 public class inTakeTesting extends LinearOpMode{
 
-    private CRServo leftMotor, rightMotor;
+    private CRServo leftMotor, rightMotor, middleMotor;
 
     public static double RIGHT_SPEED = 0.5;
     public static double LEFT_SPEED = 0.5;
+    public static double MIDDLE_SPEED = 0.5;
 
 
 
@@ -23,6 +24,7 @@ public class inTakeTesting extends LinearOpMode{
 
         leftMotor = hardwareMap.get(CRServo.class, "leftMotor");
         rightMotor = hardwareMap.get(CRServo.class,"rightMotor");
+        middleMotor = hardwareMap.get(CRServo.class,"middleMotor");
 
 
         waitForStart();
@@ -30,6 +32,7 @@ public class inTakeTesting extends LinearOpMode{
         while(opModeIsActive()){
             leftMotor.setPower(LEFT_SPEED);
             rightMotor.setPower(RIGHT_SPEED);
+            middleMotor.setPower(MIDDLE_SPEED);
 
             telemetry.addData("left Power", LEFT_SPEED);
             telemetry.addData("right Power", RIGHT_SPEED);
